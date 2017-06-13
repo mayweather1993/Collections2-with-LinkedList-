@@ -19,18 +19,16 @@ public class DataBaseTest {
     @Test
     public void save() throws Exception {
         base.save(1);
-        LinkedList<Integer> currentElements = base.findAllElements();
 
-        assertEquals(1, currentElements.size());
+        LinkedList<Integer> currentElements = base.findAllElements();
         assertEquals(new Integer(1), currentElements.get(0));
         base.save(2);
-        assertEquals(2, currentElements.size());
+        currentElements = base.findAllElements();
         assertEquals(new Integer(2), currentElements.get(1));
         base.save(3);
-        assertEquals(3, currentElements.size());
+        currentElements = base.findAllElements();
         assertEquals(new Integer(3), currentElements.get(2));
         base.save(4);
-        assertEquals(3, currentElements.size());
         currentElements = base.findAllElements();
         assertEquals(new Integer(2), currentElements.get(0));
         assertEquals(new Integer(3), currentElements.get(1));
@@ -42,14 +40,13 @@ public class DataBaseTest {
     @Test
     public void removeByIndex() throws Exception {
         base.save(1);
-        LinkedList<Integer> currentElements = base.findAllElements();
-        assertEquals(1, currentElements.size());
+        assertEquals(1, base.size());
         base.save(2);
-        assertEquals(2, currentElements.size());
+        assertEquals(2, base.size());
         base.removeByIndex(1);
-        assertEquals(1, currentElements.size());
+        assertEquals(1, base.size());
         base.removeByIndex(0);
-        assertEquals(0, currentElements.size());
+        assertEquals(0, base.size());
 
 
     }
@@ -59,17 +56,16 @@ public class DataBaseTest {
         base.save(1);
         LinkedList<Integer> currentElements = base.findAllElements();
         assertEquals(new Integer(1), currentElements.get(0));
-        base.removeByElement(0);
-        assertEquals(0, currentElements.size());
+        base.removeByElement(1);
+        assertEquals(0, base.size());
     }
 
 
     @Test
     public void findAllElements() throws Exception {
-        LinkedList<Integer> currentElements = base.findAllElements();
         base.save(1);
         base.save(2);
-        assertEquals(2, currentElements.size());
+        assertEquals(2, base.size());
 
 
     }
