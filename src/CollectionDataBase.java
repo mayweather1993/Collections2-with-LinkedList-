@@ -21,21 +21,37 @@ public class CollectionDataBase extends AbstractList<Integer> implements DataBas
 
     @Override
     public void removeByIndex(int indexOfElement) {
-        remove(indexOfElement);
+
+        try {
+            remove(indexOfElement);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Wrong index , try again");
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public Integer remove(int index) {
-        Integer element = get(index);
-        array[index] = null;
-        size--;
-        return element;
+        try {
+            Integer element = get(index);
+            array[index] = null;
+            size--;
+            return element;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Incorrect, try again");
+        }
+        return null;
     }
 
     @Override
     public void removeByElement(Integer element) {
         int something = indexOf(element);
-        remove(something);
+        try {
+            remove(something);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No such element , try again ");
+        }
     }
 
 

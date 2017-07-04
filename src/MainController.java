@@ -6,13 +6,18 @@ import java.io.InputStreamReader;
  * Created by Zver on 23.05.2017.
  */
 public class MainController {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IncorrectNumberException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         MenuController controller = new MenuController();
-
         int decision1;
         controller.showFirstMenu();
-        decision1 = Integer.parseInt(reader.readLine());
+        String text = reader.readLine();
+
+        boolean b = CheckingNumber.isNumberic(text);
+        if (!b) {
+            throw new IncorrectNumberException("Please , write a number");
+        }
+        decision1 = Integer.parseInt(text);
         switch (decision1) {
             case 1:
                 System.out.println("Your size of list = 16");
@@ -20,7 +25,12 @@ public class MainController {
                 break;
             case 2:
                 System.out.println("Enter size of your list : ");
-                decision1 = Integer.parseInt(reader.readLine());
+                String text3 = reader.readLine();
+                boolean error = CheckingNumber.isNumberic(text3);
+                if (!error) {
+                    throw new IncorrectNumberException("Please , write a number");
+                }
+                decision1 = Integer.parseInt(text3);
                 break;
             default:
                 System.out.println("Incorrect choice , try again");
@@ -32,7 +42,14 @@ public class MainController {
         int decision2;
         do {
             controller.showSecondMenu();
-            decision2 = Integer.parseInt(reader.readLine());
+            String text2 = reader.readLine();
+
+            boolean c = CheckingNumber.isNumberic(text2);
+            if (!c) {
+                throw new IncorrectNumberException("Please , write a number");
+            }
+
+            decision2 = Integer.parseInt(text2);
             switch (decision2) {
                 case 1:
                     controller.addElementMenuItem();

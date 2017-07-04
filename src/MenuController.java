@@ -16,23 +16,36 @@ public class MenuController {
 
     void addElementMenuItem() throws IOException {
         System.out.println("Enter your element : ");
-        int element = Integer.parseInt(reader.readLine());
-        base.save(element);
-        System.out.println("Now you have : " + base.findAllElements());
+        try {
+            int element = Integer.parseInt(reader.readLine());
+            base.save(element);
+            System.out.println("Now you have : " + base.findAllElements());
+        } catch (NumberFormatException e) {
+            System.out.println("Please add a number");
+        }
     }
 
     void removeElementByIndex() throws IOException {
         System.out.println("Enter an index of element that you want to delete : ");
-        int indexOfElementToRemove = Integer.parseInt(reader.readLine());
-        base.removeByIndex(indexOfElementToRemove);
-        System.out.println("Now you have array of elements :" + base.findAllElements());
+        try {
+            int indexOfElementToRemove = Integer.parseInt(reader.readLine());
+            base.removeByIndex(indexOfElementToRemove);
+            System.out.println("Now you have array of elements :" + base.findAllElements());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a number ");
+        }
     }
 
     void removeByElement() throws IOException {
         System.out.println("Enter an element that you want to delete : ");
-        int element = Integer.parseInt(reader.readLine());
-        base.removeByElement(element);
-        System.out.println("Now you have array of elements : " + base.findAllElements());
+        try {
+            int element = Integer.parseInt(reader.readLine());
+
+            base.removeByElement(element);
+            System.out.println("Now you have array of elements : " + base.findAllElements());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a number ");
+        }
     }
 
     void showFirstMenu() {
